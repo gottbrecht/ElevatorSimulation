@@ -21,6 +21,49 @@ function toggleElevatorDoors(open) {
   elevatorDoor.style.transform = open ? 'scaleX(0)' : 'scaleX(1)';
 }
 
+//Look Algoritmen
+function processLookRequests() {
+    while (!isMoving && floorRequests.length > 0) {
+        const directionRequests = floorRequests.filter(r => (direction === 1 ? r > currentFloor : r < currentFloor));
+        if (directionRequests.length > 0) {
+            //Sorterer og vælger den nærmeste anmodning i den aktuelle retning
+            directionRequests.sort((a, b) => (direction === 1 ? a - b : b - a));
+            const nextFloor = directionRequests[0];
+            moveToFloor(nextFloor);
+        } else {
+            //Skifter retning, hvis der ikke er flere anmodninger i den aktuelle retning
+            direction *= -1;
+        }
+    }
+}
+
+function requestFloorLook(floor) {
+    if (!floorRequests.includes(floor)) {
+        floorRequests.push(floor);
+        if (!isMoving) {
+            processLookRequests();
+        }
+    }
+}
+
+
+//First Come, First Served
+function processFCFSRequests() {
+    if (!isMoving && floorRequests.length > 0) {
+        // Tager den første anmodning fra køen
+        const nextFloor = floorRequests.shift();
+        moveToFloor(nextFloor);
+    }
+}
+
+function requestFloorFCFS(floor) {
+    floorRequests.push(floor);
+    if (!isMoving) {
+        processFCFSRequests();
+    }
+}
+
+
 
 async function processNextRequest() {
  //Håndter anmodninger, indtil der ikke er flere tilbage eller elevatoren er i bevægelse

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator Simulation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="building">
+    <div class="elevator-shaft">
+      <div class="elevator" id="elevator">
+        <div class="elevator-door"></div>
+      </div>
+    </div>
+    <div class="floors">
+
+    <div class="floor">
+      <div class="person" id="person4"></div> <!-- Person venter på etage 4 -->
+      <button class="floor-btn" id="floor4">4</button>
+      <button class="add-passenger" data-start="4">+ Passager fra 4</button>
+    </div>
+
+    <div class="floor">
+      <div class="person" id="person3"></div> <!-- Person venter på etage 4 -->
+      <button class="floor-btn" id="floor3">3</button>
+      <button class="add-passenger" data-start="3">+ Passager fra 3</button>
+    </div>
+
+    <div class="floor">
+      <div class="person" id="person2"></div> <!-- Person venter på etage 4 -->
+      <button class="floor-btn" id="floor2">2</button>
+      <button class="add-passenger" data-start="2">+ Passager fra 2</button>
+    </div>
+      
+    <div class="floor">
+      <div class="person" id="person1"></div> <!-- Person venter på etage 4 -->
+      <button class="floor-btn" id="floor1">1</button>
+      <button class="add-passenger" data-start="1">+ Passager fra 1</button>
+    </div>
+
+    <div class="floor">
+      <div class="person" id="person0"></div> <!-- Person venter på etage 4 -->
+      <button class="floor-btn" id="floor0">0</button>
+      <button class="add-passenger" data-start="0">+ Passager fra 0</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

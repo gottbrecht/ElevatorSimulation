@@ -21,6 +21,32 @@ function toggleElevatorDoors(open) {
   elevatorDoor.style.transform = open ? 'scaleX(0)' : 'scaleX(1)';
 }
 
+document.getElementById('algorithm').addEventListener('change', function() {
+    switch (this.value) {
+      case 'fcfs':
+        currentAlgorithm = processFCFSRequests; //Funktionen skal defineres til FCFS
+        break;
+      case 'scan':
+        currentAlgorithm = processNextRequest; //Scan implementering
+        break;
+      case 'look':
+        currentAlgorithm = processLookRequests; //Look
+        break;
+    }
+    console.log("Algoritme skiftet til:", this.value);
+  });
+  
+  // Sikrer, at 'currentAlgorithm' bruges korrekt i anmodningshåndteringen
+  function requestFloor(floor) {
+    if (!floorRequests.includes(floor)) {
+      floorRequests.push(floor);
+      if (!isMoving) {
+        currentAlgorithm();
+      }
+    }
+  }
+  
+
 //Look Algoritmen
 function processLookRequests() {
     while (!isMoving && floorRequests.length > 0) {

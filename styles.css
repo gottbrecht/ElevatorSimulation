@@ -1,114 +1,154 @@
 body {
-    background-color: #f4f4f4;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .building {
+  background-color: #f4f4f4;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.building {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 600px;
+  padding: 20px;
+  background-color: #ebebeb;
+  border: 1px solid #d3d3d3;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.elevator-shaft {
+  position: relative;
+  width: 120px;
+  height: 100%;
+  background-color: #8a7f70;
+  border: 2px solid #5c5346;
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.elevator {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+  background-color: #a99b8c;
+  border: 2px solid #7c6f60;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: bottom 1s ease-in-out; /* Glat transition for bevægelse */
+
+}
+
+.elevator-door {
+  width: 50%;
+  height: 90%;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 2px;
+  margin: 5% auto;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 500ms ease-in-out; /* Glatte døråbninger og -lukninger */
+  transform: scaleX(1); /* Initial tilstand: Dør lukket */
+
+}
+
+.floors {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.floor-btn {
+  background-color: #8a7f70;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 80px; /* Bevar den oprindelige bredde */
+}
+
+.floor-btn:hover {
+  background-color: #9c8f80; /* Lysere ved hover */
+}
+
+.floor-btn:active {
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.add-passenger {
+  width: 60px;
+}
+
+.add-passenger {
+  width: 80px;
+  background-color: #f0f0f0;
+  border: none;
+  color: #333;
+  padding: 6px;
+  margin: 2px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  font-size: 12px;
+}
+.add-passenger:hover {
+  background-color: #e0e0e0;
+}
+
+.person {
+  width: 20px;
+  height: 40px;
+  background-color: #000;
+  border-radius: 10px;
+  display: none; /* Skjult som standard */
+  position: absolute;
+  bottom: 0; /* Start ved bunden af hver etage */
+  left: 50%; /* Centrer personen ved siden af elevatoren */
+  transition: all 1s ease-in-out; /* Glat transition for bevægelse */
+}
+
+.controls {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    height: 600px;
-    padding: 20px;
-    background-color: #ebebeb;
-    border: 1px solid #d3d3d3;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .elevator-shaft {
-    position: relative;
-    width: 120px;
-    height: 100%;
-    background-color: #8a7f70;
-    border: 2px solid #5c5346;
-    border-radius: 5px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .elevator {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 25%;
-    background-color: #a99b8c;
-    border: 2px solid #7c6f60;
-    border-radius: 3px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    transition: bottom 1s ease-in-out; /* Glat transition for bevægelse */
-  
-  }
-  
-  .elevator-door {
-    width: 50%;
-    height: 90%;
-    background-color: #fff;
-    border: 2px solid #ddd;
-    border-radius: 2px;
-    margin: 5% auto;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    transition: transform 500ms ease-in-out; /* Glatte døråbninger og -lukninger */
-    transform: scaleX(1); /* Initial tilstand: Dør lukket */
-  
-  }
-  
-  .floors {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-  }
-  
-  .floor-btn {
-    background-color: #8a7f70;
-    color: #ffffff;
-    border: none;
+    align-items: center;
     padding: 10px;
-    margin: 5px;
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 80px; /* Bevar den oprindelige bredde */
-  }
-  
-  .floor-btn:hover {
-    background-color: #9c8f80; /* Lysere ved hover */
-  }
-  
-  .floor-btn:active {
-    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.5);
-  }
-  
-  .add-passenger {
-    width: 60px;
-  }
-  
-  .add-passenger {
-    width: 80px;
-    background-color: #f0f0f0;
-    border: none;
-    color: #333;
-    padding: 6px;
-    margin: 2px 0;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-align: center;
-    font-size: 12px;
-  }
-  .add-passenger:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .person {
-    width: 20px;
-    height: 40px;
-    background-color: #000;
-    border-radius: 10px;
-    display: none; /* Skjult som standard */
+    background-color: #f4f4f4; /* Let grå baggrund for bedre kontrast */
+    border: 1px solid #ccc; /* Subtil grænse under kontrolpanelet */
     position: absolute;
-    bottom: 0; /* Start ved bunden af hver etage */
-    left: 50%; /* Centrer personen ved siden af elevatoren */
-    transition: all 1s ease-in-out; /* Glat transition for bevægelse */
-  }
-  
-  
+    right: 10px;
+    top: 10px;
+    width: 200;
+}
+
+.controls label {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.controls select, .controls button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+}
+
+.controls button {
+    background-color: #5c67f2; /* Blå baggrund for knappen */
+    color: white;
+    border: none;
+}
+
+.controls button:hover {
+    background-color: #4a54e1; /* Mørkere blå ved hover */
+}
+
+

@@ -21,6 +21,104 @@ function toggleElevatorDoors(open) {
   elevatorDoor.style.transform = open ? 'scaleX(0)' : 'scaleX(1)';
 }
 
+class ListNode {
+    constructor(floor) {
+        this.floor = floor;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+    }
+}
+
+// Metode til at tilføje en ny node i sort orden
+insertSorted(floor) {
+    const newNode = new ListNode(floor);
+    if (!this.head) {
+        this.head = this.tail = newNode;
+    } else {
+        let current = this.head;
+        let previous = null;
+        while (current && current.floor < floor) {
+            previous = current;
+            current = current.next;
+        }
+        if (!previous) {
+            newNode.next = this.head;
+            this.head.prev = newNode;
+            this.head = newNode;
+        } else {
+            newNode.next = previous.next;
+            newNode.prev = previous;
+            if (previous.next) previous.next.prev = newNode;
+            previous.next = newNode;
+            if (newNode.next == null) this.tail = newNode; // Update tail if at the end
+        }
+    }
+}
+
+// Metode til at fjerne en node
+remove(floor) {
+    let current = this.head;
+    while (current) {
+        if (current.floor === floor) {
+            if (current.prev) current.prev.next = current.next;
+            if (current.next) current.next.prev = current.prev;
+            if (current === this.head) this.head = current.next;
+            if (current === this.tail) this.tail = current.prev;
+            return;
+        }
+        current = current.next;
+    }
+}
+
+// Metode til at finde en node
+find(floor) {
+    let current = this.head;
+    while (current) {
+        if (current.floor === floor) {
+            return true;
+        }
+        current = current.next;
+    }
+    return false;
+}
+
+
+function processLookRequests(elevator) {
+if (!elevator.isMoving) {
+    if (elevator.direction === 1) { //Opad
+        let current = elevator.requests.head;
+        while (current && current.floor < elevator.currentFloor) {
+            current = current.next;
+        }
+        if (current) {
+            moveToFloor(current.floor);
+        } else {
+            elevator.direction = -1; //Skift retning
+            processLookRequests(elevator);
+        }
+    } else { //Nedad
+        let current = elevator.requests.tail;
+        while (current && current.floor > elevator.currentFloor) {
+            current = current.prev;
+        }
+        if (current) {
+            moveToFloor(current.floor);
+        } else {
+            elevator.direction = 1; //Skift retning
+            processLookRequests(elevator);
+        }
+    }
+}
+
+
+
 document.getElementById('algorithm').addEventListener('change', function() {
     switch (this.value) {
       case 'fcfs':

@@ -1,6 +1,10 @@
 body {
-  background-color: #f4f4f4;
-  font-family: 'Times New Roman', Times, serif;
+ background: linear-gradient(to right, #84fab0, #8fd3f4); /* En blød gradient fra grøn til blå */
+ background-image: url('.\images\tiles\redwall.png'); /* Skift 'path_to_your_image.jpg' til stien til dit billede */    background-size: cover; /* Dækker hele siden, uanset skærmstørrelse */
+ background-position: center; /* Centrerer billedet på siden */
+ background-repeat: no-repeat;   
+ background-color: #f4f4f4;
+ font-family: 'Times New Roman', Times, serif;
 }
 
 .building {
@@ -33,7 +37,7 @@ body {
   border: 2px solid #7c6f60;
   border-radius: 3px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  transition: bottom 1s ease-in-out; /* Glat transition for bevægelse */
+  transition: bottom 1s ease-in-out; /*Glat transition for bevægelse */
 
 }
 
@@ -45,8 +49,8 @@ body {
   border-radius: 2px;
   margin: 5% auto;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  transition: transform 500ms ease-in-out; /* Glatte døråbninger og -lukninger */
-  transform: scaleX(1); /* Initial tilstand: Dør lukket */
+  transition: transform 500ms ease-in-out; /*Glatte døråbninger og -lukninger */
+  transform: scaleX(1); /*Initial tilstand: Dør lukket */
 
 }
 
@@ -104,11 +108,11 @@ body {
   height: 40px;
   background-color: #000;
   border-radius: 10px;
-  display: none; /* Skjult som standard */
+  display: none; /*Skjult som standard */
   position: absolute;
-  bottom: 0; /* Start ved bunden af hver etage */
-  left: 50%; /* Centrer personen ved siden af elevatoren */
-  transition: all 1s ease-in-out; /* Glat transition for bevægelse */
+  bottom: 0; /*Start ved bunden af hver etage */
+  left: 50%; /*Centrer personen ved siden af elevatoren */
+  transition: all 1s ease-in-out; /*glat transition for bevægelse */
 }
 
 .controls {
@@ -116,8 +120,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: #f4f4f4; /* Let grå baggrund for bedre kontrast */
-    border: 1px solid #ccc; /* Subtil grænse under kontrolpanelet */
+    background-color: #f4f4f4; /*Let grå baggrund for bedre kontrast */
+    border: 1px solid #ccc; 
     position: absolute;
     right: 10px;
     top: 10px;
@@ -142,13 +146,23 @@ body {
 }
 
 .controls button {
-    background-color: #5c67f2; /* Blå baggrund for knappen */
+    background-color: #5c67f2; /*Blå baggrund for knappen */
     color: white;
     border: none;
 }
 
 .controls button:hover {
-    background-color: #4a54e1; /* Mørkere blå ved hover */
+    background-color: #4a54e1; /*Mørkere blå ved hover */
 }
+
+@media (max-width: 600px) {
+    .controls {
+        position: static; /*Gør kontrolbaren ikke-absolut for bedre mobilt layout */
+        width: 100%; /*Gør bredden fuld for små skærme */
+        margin-top: 10px; /*Tilføj lidt plads over baren */
+        order: 1; /*Placer kontrolbaren over eller under elevatoren om nødvendigt */
+    }
+}
+
 
 

@@ -35,8 +35,8 @@ class LinkedList {
         this.tail = null;
     }
 }
-
-// Metode til at tilføje en ny node i sort orden
+/*
+//Metode til at tilføje en ny node i sort orden
 insertSorted(floor) {
     const newNode = new ListNode(floor);
     if (!this.head) {
@@ -116,7 +116,7 @@ if (!elevator.isMoving) {
         }
     }
 }
-
+*/
 
 
 document.getElementById('algorithm').addEventListener('change', function() {

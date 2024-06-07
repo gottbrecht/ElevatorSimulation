@@ -1,3 +1,10 @@
+# Elevator Simulation 
+![Screenshot (154)](https://github.com/gottbrecht/ElevatorSimulation/assets/113165807/0d2500db-3748-42a8-a189-f85da5e77f18)
+
+# Kort beskrivelse
+
+Brugeren vælger mellem tre algoritmer: SCAN, Look og First Come, First Served. Efter valgt algoritme, trykker man på en vilkårlig etage og elevator simulationen optræder derefter. Man kan vælge at tilføje passagerer, og elevatordøren vil åbne og lukke, alt efter om elevatoren er i bevægelse, eller ej.
+
 # ElevatorSimulation
 #SCAN Algoritme(elevatoralgoritmen): Elevatoren fortsætter i samme retning, indtil den ikke har flere anmodninger i den retning, og derefter skifter retning, hvis der er anmodninger i den modsatte retning.
 
